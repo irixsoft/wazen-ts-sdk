@@ -1,5 +1,6 @@
 import type { ApiErrorCode } from "./types.js";
 
+/** Thrown when the Wazen API returns an error response. */
 export class WazenApiError extends Error {
   readonly status: number;
   readonly code: ApiErrorCode;
@@ -22,6 +23,7 @@ export class WazenApiError extends Error {
   }
 }
 
+/** Thrown when a request exceeds the configured timeout. */
 export class WazenTimeoutError extends Error {
   constructor(timeout: number) {
     super(`Request timed out after ${timeout}ms`);
@@ -29,6 +31,7 @@ export class WazenTimeoutError extends Error {
   }
 }
 
+/** Thrown when a network error prevents the request from completing. */
 export class WazenNetworkError extends Error {
   constructor(cause: unknown) {
     const msg = cause instanceof Error ? cause.message : "Network request failed";

@@ -90,7 +90,9 @@ await wazen.groups.create("session-id", {
   subject: "Team Chat",
   participants: ["+1234567890"],
 });
+await wazen.groups.get("session-id", "group-id");
 await wazen.groups.update("session-id", "group-id", { subject: "New Name" });
+await wazen.groups.leave("session-id", "group-id");
 await wazen.groups.manageParticipants("session-id", "group-id", {
   action: "add",
   participants: ["+0987654321"],
@@ -99,6 +101,18 @@ await wazen.groups.sendMessage("session-id", "group-id", {
   type: "text",
   content: "Hello group!",
 });
+await wazen.groups.getInvite("session-id", "group-id");
+await wazen.groups.revokeInvite("session-id", "group-id");
+await wazen.groups.getRequests("session-id", "group-id");
+await wazen.groups.manageRequests("session-id", "group-id", {
+  participants: ["jid@s.whatsapp.net"],
+  action: "approve",
+});
+await wazen.groups.updateSettings("session-id", "group-id", {
+  setting: "announcement",
+});
+await wazen.groups.getInviteInfo("session-id", { code: "ABC123" });
+await wazen.groups.join("session-id", { code: "ABC123" });
 ```
 
 ### Channels (Pro+)
@@ -108,10 +122,20 @@ await wazen.channels.create("session-id", {
   name: "Product Updates",
   description: "Latest news",
 });
+await wazen.channels.lookup("session-id", { jid: "channel@newsletter" });
+await wazen.channels.get("session-id", "channel-id");
+await wazen.channels.update("session-id", "channel-id", { name: "New Name" });
+await wazen.channels.delete("session-id", "channel-id");
 await wazen.channels.sendMessage("session-id", "channel-id", {
   type: "text",
   content: "New release!",
 });
+await wazen.channels.listMessages("session-id", "channel-id", { count: 10 });
+await wazen.channels.react("session-id", "channel-id", "msg-id", { reaction: "👍" });
+await wazen.channels.follow("session-id", "channel-id");
+await wazen.channels.unfollow("session-id", "channel-id");
+await wazen.channels.mute("session-id", "channel-id");
+await wazen.channels.unmute("session-id", "channel-id");
 ```
 
 ### Contacts
@@ -152,6 +176,7 @@ await wazen.webhooks.list();
 await wazen.webhooks.update("webhook-id", { enabled: false });
 await wazen.webhooks.delete("webhook-id");
 await wazen.webhooks.test("webhook-id");
+await wazen.webhooks.getLogs("webhook-id");
 ```
 
 ### Account

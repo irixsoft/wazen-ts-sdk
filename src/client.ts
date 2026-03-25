@@ -13,6 +13,16 @@ import { ApiKeys } from "./resources/api-keys.js";
 const DEFAULT_BASE_URL = "https://wazen.dev/api/v1";
 const DEFAULT_TIMEOUT = 30_000;
 
+/**
+ * Wazen API client. Create an instance with your API key to access all resources.
+ *
+ * @example
+ * ```typescript
+ * import { Wazen } from "wazen";
+ * const wazen = new Wazen("wz_your_api_key");
+ * const sessions = await wazen.sessions.list();
+ * ```
+ */
 export class Wazen {
   readonly sessions: Sessions;
   readonly messages: Messages;
@@ -24,6 +34,10 @@ export class Wazen {
   readonly account: AccountResource;
   readonly apiKeys: ApiKeys;
 
+  /**
+   * @param apiKey - Your Wazen API key (prefixed with `wz_`)
+   * @param options - Optional configuration (baseUrl, timeout)
+   */
   constructor(apiKey: string, options?: WazenClientOptions) {
     if (!apiKey || typeof apiKey !== "string") {
       throw new Error("API key is required. Pass your Wazen API key as the first argument.");
