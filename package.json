@@ -1,0 +1,48 @@
+{
+  "name": "wazen",
+  "version": "0.1.0",
+  "description": "Official TypeScript/Node.js SDK for the Wazen WhatsApp API",
+  "author": "IrixSoft <info@irixsoft.com>",
+  "license": "MIT",
+  "homepage": "https://wazen.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/irixsoft/wazen-ts-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/irixsoft/wazen-ts-sdk/issues"
+  },
+  "keywords": [
+    "wazen",
+    "whatsapp",
+    "api",
+    "sdk",
+    "typescript",
+    "messaging"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "bun test",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.7.0"
+  }
+}
