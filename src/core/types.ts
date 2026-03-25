@@ -45,6 +45,10 @@ export interface WazenClientOptions {
   timeout?: number;
 }
 
+export interface MessageResponse {
+  message: string;
+}
+
 export type ApiErrorCode =
   | "AUTH_INVALID_KEY"
   | "AUTH_UNAUTHORIZED"
