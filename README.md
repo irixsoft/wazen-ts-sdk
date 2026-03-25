@@ -2,27 +2,27 @@
 
 Official TypeScript SDK for the [Wazen WhatsApp API](https://wazen.dev).
 
-[![npm](https://img.shields.io/npm/v/wazen)](https://www.npmjs.com/package/wazen)
+[![npm](https://img.shields.io/npm/v/@wazen/sdk)](https://www.npmjs.com/package/@wazen/sdk)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=fff)](https://www.typescriptlang.org)
 
 ## Installation
 
 ```bash
-npm install wazen
+npm install @wazen/sdk
 ```
 
 ```bash
-bun add wazen
+bun add @wazen/sdk
 ```
 
 ```bash
-yarn add wazen
+yarn add @wazen/sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { Wazen } from "wazen";
+import { Wazen } from "@wazen/sdk";
 
 const wazen = new Wazen("wz_your_api_key");
 
@@ -206,7 +206,7 @@ const wazen = new Wazen("wz_your_api_key", {
 ## Error Handling
 
 ```typescript
-import { Wazen, WazenApiError } from "wazen";
+import { Wazen, WazenApiError } from "@wazen/sdk";
 
 try {
   await wazen.messages.send("session-id", { to: "+1234567890", type: "text", content: "Hi" });

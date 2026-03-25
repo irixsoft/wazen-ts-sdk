@@ -18,7 +18,7 @@ const DEFAULT_TIMEOUT = 30_000;
  *
  * @example
  * ```typescript
- * import { Wazen } from "wazen";
+ * import { Wazen } from "@wazen/sdk";
  * const wazen = new Wazen("wz_your_api_key");
  * const sessions = await wazen.sessions.list();
  * ```

@@ -48,11 +48,11 @@ Three error classes for precise catch handling:
 ## Quick Start
 
 ```bash
-npm install wazen
+npm install @wazen/sdk
 ```
 
 ```typescript
-import { Wazen, WazenApiError } from "wazen";
+import { Wazen, WazenApiError } from "@wazen/sdk";
 
 const wazen = new Wazen("wz_your_api_key");
 
@@ -76,7 +76,7 @@ try {
 
 ## Links
 
-- [npm package](https://www.npmjs.com/package/wazen)
+- [npm package](https://www.npmjs.com/package/@wazen/sdk)
 - [GitHub repository](https://github.com/irixsoft/wazen-ts-sdk)
 - [API documentation](https://wazen.dev/docs)
 - [Dashboard](https://wazen.dev/dashboard)
