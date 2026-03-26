@@ -82,7 +82,7 @@ await wazen.messages.list("session-id", { direction: "outgoing", limit: 10 });
 await wazen.messages.get("session-id", "message-id");
 ```
 
-### Groups (Pro+)
+### Groups
 
 ```typescript
 await wazen.groups.list("session-id");
@@ -115,7 +115,7 @@ await wazen.groups.getInviteInfo("session-id", { code: "ABC123" });
 await wazen.groups.join("session-id", { code: "ABC123" });
 ```
 
-### Channels (Pro+)
+### Channels
 
 ```typescript
 await wazen.channels.create("session-id", {
@@ -144,7 +144,7 @@ await wazen.channels.unmute("session-id", "channel-id");
 // Check single number
 await wazen.contacts.check("session-id", { phone: "+1234567890" });
 
-// Bulk check (Pro+)
+// Bulk check
 await wazen.contacts.bulkCheck("session-id", {
   phones: ["+1234567890", "+0987654321"],
 });
