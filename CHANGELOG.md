@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+- Add `sender_lid`, `from_phone_number`, `from_display_name` fields to the `Message` type
+- These surface the actual sender phone number behind Baileys v7 LID identifiers (`*@lid`) for inbound messages
+- For group messages, `sender_lid` and `from_phone_number` identify the individual participant (`from_jid` remains the group JID)
+
 ## 0.3.0
 
 - Add `mime_type`, `file_size`, `file_name` fields to the `Message` type (inbound media metadata)

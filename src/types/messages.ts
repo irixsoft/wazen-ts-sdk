@@ -25,6 +25,9 @@ export interface Message {
   message_id: string | null;
   from_jid: string;
   to_jid: string;
+  sender_lid: string | null;
+  from_phone_number: string | null;
+  from_display_name: string | null;
   type: string;
   content: string | null;
   media_url: string | null;
