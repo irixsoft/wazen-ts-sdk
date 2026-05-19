@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+- Add `mime_type`, `file_size`, `file_name` fields to the `Message` type (inbound media metadata)
+- Add `messages.getMedia(sessionId, messageId)` returning `Uint8Array` of raw media bytes
+
 ## 0.2.0
 
 - All features now available on all plans (removed Pro+ tier restrictions)

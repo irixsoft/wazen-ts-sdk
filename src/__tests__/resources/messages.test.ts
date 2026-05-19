@@ -79,4 +79,23 @@ describe("Messages resource", () => {
     expect(init.method).toBe("GET");
     expect(result).toEqual({ id: "m1", content: "Hello" });
   });
+
+  test("getMedia sends GET /sessions/:id/messages/:msgId/media and returns Uint8Array", async () => {
+    const png = new Uint8Array([0x89, 0x50, 0x4e, 0x47]);
+    const fetchMock = mock(() =>
+      Promise.resolve(new Response(png, {
+        status: 200,
+        headers: { "Content-Type": "image/png" },
+      }))
+    );
+    globalThis.fetch = fetchMock as unknown as typeof fetch;
+
+    const result = await messages.getMedia("s1", "m1");
+
+    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    expect(url).toBe("https://api.test.com/sessions/s1/messages/m1/media");
+    expect(init.method).toBe("GET");
+    expect(result).toBeInstanceOf(Uint8Array);
+    expect(Array.from(result)).toEqual([0x89, 0x50, 0x4e, 0x47]);
+  });
 });

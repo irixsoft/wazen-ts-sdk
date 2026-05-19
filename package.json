@@ -1,6 +1,6 @@
 {
   "name": "@wazen/sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Official TypeScript/Node.js SDK for the Wazen WhatsApp API",
   "author": "IrixSoft <info@irixsoft.com>",
   "license": "MIT",

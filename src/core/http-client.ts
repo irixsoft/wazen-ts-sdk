@@ -31,6 +31,51 @@ export class HttpClient {
     };
   }
 
+  async requestBinary(method: string, path: string, options?: RequestOptions): Promise<Uint8Array> {
+    const url = this.buildUrl(path, options?.query);
+
+    let response: Response;
+    try {
+      response = await fetch(url, {
+        method,
+        headers: { "Authorization": `Bearer ${this.apiKey}` },
+        signal: AbortSignal.timeout(this.timeout),
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        throw new WazenTimeoutError(this.timeout);
+      }
+      throw new WazenNetworkError(error);
+    }
+
+    if (!response.ok) {
+      let errorBody: ApiResponse<unknown> | null = null;
+      try {
+        errorBody = await response.json() as ApiResponse<unknown>;
+      } catch {
+        // Body was not JSON; fall through to generic error
+      }
+      if (errorBody && !errorBody.success) {
+        throw new WazenApiError(
+          errorBody.error.message,
+          response.status,
+          errorBody.error.code as ApiErrorCode,
+          errorBody.meta.request_id,
+          errorBody.error.details,
+        );
+      }
+      throw new WazenApiError(
+        `Request failed (HTTP ${response.status})`,
+        response.status,
+        "INTERNAL_ERROR" as ApiErrorCode,
+        "",
+      );
+    }
+
+    const buffer = await response.arrayBuffer();
+    return new Uint8Array(buffer);
+  }
+
   private async execute<T>(method: string, path: string, options?: RequestOptions): Promise<ApiSuccessResponse<T>> {
     const url = this.buildUrl(path, options?.query);
 

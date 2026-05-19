@@ -28,6 +28,9 @@ export interface Message {
   type: string;
   content: string | null;
   media_url: string | null;
+  mime_type: string | null;
+  file_size: number | null;
+  file_name: string | null;
   status: string;
   direction: string;
   timestamp: string;

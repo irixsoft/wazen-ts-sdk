@@ -16,4 +16,8 @@ export class Messages extends BaseResource {
   get(sessionId: string, messageId: string): Promise<Message> {
     return this.client.request<Message>("GET", `/sessions/${sessionId}/messages/${messageId}`);
   }
+
+  getMedia(sessionId: string, messageId: string): Promise<Uint8Array> {
+    return this.client.requestBinary("GET", `/sessions/${sessionId}/messages/${messageId}/media`);
+  }
 }
